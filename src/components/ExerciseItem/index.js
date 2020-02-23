@@ -2,6 +2,8 @@ import React from 'react';
 
 export default function ExerciseItem() {
   return (
-    <li class="list-group-item">Example exercise</li>
+    <li className="list-group-item">Example exercise
+    <button className="btn btn-success btn-sm float-right">+</button>
+    </li>
   );
 }

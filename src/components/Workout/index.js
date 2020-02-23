@@ -1,7 +1,10 @@
 import React from 'react';
+import ExerciseList from "../ExerciseList";
 
 export default function Workout() {
   return (
-    <div>Workout</div>
+    <div>
+      {/* <ExerciseList /> */}
+    </div>
   );
 }
