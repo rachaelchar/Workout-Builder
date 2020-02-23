@@ -9,11 +9,9 @@ function App() {
     <div>
       <Header />
       <div className="container">
-        <div className="row">
-          <Search />
-        </div>
-        <div className="row">
+        <div className="row mt-3">
           <div className="col-8">
+            <Search />
             <ExerciseList />
           </div>
           <div className="col-4">
