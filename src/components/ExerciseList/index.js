@@ -1,7 +1,10 @@
 import React from 'react';
+import ExerciseItem from '../ExerciseItem/';
 
 export default function ExerciseList() {
   return (
-    <div>ExerciseList</div>
+    <ul class="list-group">
+      <ExerciseItem />
+    </ul>
   );
 }
