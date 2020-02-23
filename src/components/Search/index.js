@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Search(){
-  return(
-
+export default function Search() {
+  return (
+    <div>Search Select</div>
   );
 }
