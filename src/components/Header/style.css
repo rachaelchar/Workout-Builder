@@ -1,0 +1,20 @@
+
+/* yellow: #ffe88c */
+/* ocean: #7babad */
+.bg-yellow {
+  background-color: #7babad;
+}
+
+.navbar-ocean {
+  color: #ffe88c;
+}
+
+.navbar-brand
+{
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    padding:0;
+}
