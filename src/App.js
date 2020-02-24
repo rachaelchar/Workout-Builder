@@ -6,6 +6,7 @@ import Workout from './components/Workout';
 
 // ============ FUNCTIONALITY NEEDED ============
 // need all exercises
+// onChange event for search dropdown to filter exercise list
 // var to save exercise array after filter
 // add exercise to workout onClick add btn
 
@@ -93,11 +94,35 @@ function App() {
   ];
 
   const [filteredExerciseList, setFilteredExerciseList] = useState([]);
+  const [workoutType, setWorkoutType] = useState();
 
 
+  // When the component mounts, show all exercises 
   useEffect(() => {
     setFilteredExerciseList(rawExerciseList);
   }, []);
+
+  // When a workout type is selected, show exercises compatible with that type
+  useEffect(() => {
+    const renderedList = rawExerciseList.filter((exercise) => {
+      if (workoutType === "lower") {
+        return exercise.type === "lower";
+      }
+      else if (workoutType === "upper") {
+        return exercise.type === "upper";
+      }
+      else if (workoutType === "circuit") {
+        return exercise.aerobic === true;
+      }
+      else if (workoutType === "ladder") {
+        return exercise.aerobic === true;
+      }
+      else {
+        return true;
+      }
+    });
+    setFilteredExerciseList(renderedList);
+  }, [workoutType]);
 
 
   return (
@@ -106,7 +131,10 @@ function App() {
       <div className="container">
         <div className="row mt-3">
           <div className="col-7">
-            <Search />
+            <Search
+              workoutType={workoutType}
+              setWorkoutType={setWorkoutType}
+            />
             <ExerciseList
               exerciseList={filteredExerciseList}
             />

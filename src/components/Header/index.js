@@ -10,7 +10,7 @@ export default function Header() {
           src={logo}
           className="img-logo"
           width="40" height="40"
-          class="d-inline-block align-top" alt="" />
+          className="d-inline-block align-top" alt="" />
       </span>
     </nav>
   );
