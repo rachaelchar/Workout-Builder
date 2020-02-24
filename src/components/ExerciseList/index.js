@@ -1,5 +1,5 @@
 import React from 'react';
-import ExerciseItem from '../ExerciseItem/';
+import ExerciseItem from '../ExerciseItem';
 
 export default function ExerciseList(props) {
   return (
@@ -8,6 +8,9 @@ export default function ExerciseList(props) {
         <ExerciseItem
           key={exercise.name}
           exercise={exercise}
+          list="exerciseList"
+          addToWorkout={props.addToWorkout}
+          removeFromWorkout={props.removeFromWorkout}
         />
       )}
     </ul>

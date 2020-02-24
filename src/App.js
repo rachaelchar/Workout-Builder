@@ -95,7 +95,20 @@ function App() {
 
   const [filteredExerciseList, setFilteredExerciseList] = useState([]);
   const [workoutType, setWorkoutType] = useState();
+  const [workout, setWorkout] = useState([]);
 
+  // Function to add exercise to workout
+  const addToWorkout = (exercise) => {
+    setWorkout([
+      ...workout,
+      exercise
+    ]);
+  }
+
+  // Function to remove exercise from workout
+  const removeFromWorkout = (exercise) => {
+    alert(exercise, "removed from workout");
+  }
 
   // When the component mounts, show all exercises 
   useEffect(() => {
@@ -137,10 +150,14 @@ function App() {
             />
             <ExerciseList
               exerciseList={filteredExerciseList}
+              addToWorkout={addToWorkout}
             />
           </div>
           <div className="col-5">
-            <Workout />
+            <Workout
+              exerciseList={workout}
+              removeFromWorkout={removeFromWorkout}
+            />
           </div>
         </div>
       </div>
