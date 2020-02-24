@@ -9,12 +9,12 @@ export default function ExerciseItem(props) {
       {
         props.list === "exerciseList" ?
           < button
-            className="btn btn-ocean btn-sm float-right text-sun"
+            className="btn btn-ocean btn-sm float-right"
             onClick={() => props.addToWorkout(props.exercise)}
           >+</button>
           :
           < button
-            className="btn btn-sun btn-sm float-right text-ocean"
+            className="btn btn-sun btn-sm float-right"
             onClick={() => props.removeFromWorkout(props.exercise)
             }
           >-</button >

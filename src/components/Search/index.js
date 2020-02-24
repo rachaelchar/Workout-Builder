@@ -4,7 +4,7 @@ export default function Search(props) {
   return (
     <div className="col-12">
       <div className="form-group">
-        <label for="workoutType">Workout Type</label>
+        <h4 className="text-center">Choose Type</h4>
         <select
           className="form-control"
           id="workoutType"

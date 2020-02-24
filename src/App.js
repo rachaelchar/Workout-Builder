@@ -99,6 +99,7 @@ function App() {
 
   // Function to add exercise to workout
   const addToWorkout = (exercise) => {
+
     setWorkout([
       ...workout,
       exercise
@@ -107,7 +108,11 @@ function App() {
 
   // Function to remove exercise from workout
   const removeFromWorkout = (exercise) => {
-    alert(exercise, "removed from workout");
+    const newWorkoutList = workout.filter((deletedExercise) => {
+      // return the complete list of exercises that do not match the key of the deleted exercise
+      return exercise.name !== deletedExercise.name
+    });
+    setWorkout(newWorkoutList);
   }
 
   // When the component mounts, show all exercises 
