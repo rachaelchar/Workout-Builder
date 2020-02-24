@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.css';
 
-export default function ExerciseItem() {
+export default function ExerciseItem(props) {
   return (
-    <li className="list-group-item">Example exercise
-    <button className="btn btn-ocean btn-sm float-right text-sun">+</button>
+    <li className="list-group-item">{props.exercise.name}
+      <button className="btn btn-ocean btn-sm float-right text-sun">+</button>
     </li>
   );
 }
