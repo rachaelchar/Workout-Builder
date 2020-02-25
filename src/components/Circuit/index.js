@@ -1,12 +1,10 @@
 import React from 'react';
-import ExerciseItem from "../ExerciseItem";
-// import Circuit from "../Circuit";
-// import Ladder from "../Ladder";
+import ExerciseItem from '../ExerciseItem';
 
-export default function Workout(props) {
+export default function Circuit(props) {
   return (
     <div>
-      <h4 className="text-center">Workout</h4>
+      <h5>3x3x3 Circuit</h5>
       <ul className="list-group">
         {props.exerciseList.map((exercise) =>
           <ExerciseItem
@@ -17,9 +15,6 @@ export default function Workout(props) {
           />
         )}
       </ul>
-      {/* if select value = "circuit" render Circuit component */}
-
-      {/* if select value = "ladder" render Ladder component */}
     </div>
   );
 }
