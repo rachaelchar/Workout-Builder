@@ -119,6 +119,7 @@ function App() {
   const saveWorkout = () => {
     console.log(workout);
     // alert "Workout saved!" if no errors
+    alert("Workout saved!");
   }
 
   // When the component mounts, show all exercises 
@@ -169,6 +170,7 @@ function App() {
               exerciseList={workout}
               removeFromWorkout={removeFromWorkout}
               saveWorkout={saveWorkout}
+              workoutType={workoutType}
             />
           </div>
         </div>
