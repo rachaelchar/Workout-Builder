@@ -7,17 +7,19 @@ import Ladder from "../Ladder";
 export default function Workout(props) {
 
   let template;
+
   // Render the template that the user has selected, if appropriate.
   if (props.workoutType === "circuit") {
-    template = <Circuit />;
+    template = <Circuit
+      exerciseList={props.workout}
+    />;
   } else if (props.workoutType === "ladder") {
-    template = <Ladder />;
-  }
-
-  // Otherwise, return the Workout ul
-  return (
-    <div>
-      <h4 className="text-center">Workout</h4>
+    template = <Ladder
+      exerciseList={props.workout}
+    />;
+  } else {
+    // Otherwise, build the workout without a template.
+    template =
       <ul className="list-group">
         {props.exerciseList.map((exercise) =>
           <ExerciseItem
@@ -27,16 +29,17 @@ export default function Workout(props) {
             removeFromWorkout={props.removeFromWorkout}
           />
         )}
-      </ul>
+      </ul>;
+  }
+
+  return (
+    <div>
+      <h4 className="text-center">Workout</h4>
 
       {template}
 
       <SaveButton
         saveWorkout={props.saveWorkout} />
-      {/* if select value = "circuit" render Circuit component */}
-
-      {/* if select value = "ladder" render Ladder component */}
-
     </div>
   );
 }
