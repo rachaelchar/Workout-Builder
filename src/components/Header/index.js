@@ -4,7 +4,7 @@ import logo from "../../workout_builder_icon.png";
 
 export default function Header() {
   return (
-    <nav className="navbar navbar-ocean bg-sun">
+    <nav className="navbar navbar-sun bg-ocean">
       <span className="navbar-brand" href="#">
         <img
           src={logo}

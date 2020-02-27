@@ -1,0 +1,29 @@
+.rest {
+  font-style: italic;
+  color: grey;
+}
+
+.text-ocean {
+  color: #7babad;
+  font-weight: bold;
+}
+
+.text-ocean-darken-1 {
+  color: #639496;
+  font-weight: bold;
+}
+
+.text-ocean-darken-2 {
+  color: #4d7779;  
+  font-weight: bold;
+}
+
+.text-ocean-darken-3 {
+  color: #335557;
+  font-weight: bold;
+}
+
+.text-ocean-darken-4 {
+  color: #233f41;
+  font-weight: bold;
+}
