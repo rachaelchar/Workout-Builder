@@ -16,7 +16,6 @@ export default function Circuit(props) {
 
       <ul className="list-group text-center mb-3">
         <li className="list-group-item"> BLOCK 1</li>
-        {console.log((namesArray[0]))}
         <li className="list-group-item pl-1">{namesArray[0]}</li>
         <li className="list-group-item pl-1">{namesArray[1]}</li>
         <li className="list-group-item pl-1">{namesArray[2]}</li>
