@@ -115,6 +115,12 @@ function App() {
     setWorkout(newWorkoutList);
   }
 
+  // Function to save the complete workout 
+  const saveWorkout = () => {
+    console.log(workout);
+    // alert "Workout saved!" if no errors
+  }
+
   // When the component mounts, show all exercises 
   useEffect(() => {
     setFilteredExerciseList(rawExerciseList);
@@ -162,6 +168,7 @@ function App() {
             <Workout
               exerciseList={workout}
               removeFromWorkout={removeFromWorkout}
+              saveWorkout={saveWorkout}
             />
           </div>
         </div>

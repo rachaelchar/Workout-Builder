@@ -6,7 +6,7 @@ export default function SaveButton(props) {
     <div className="text-center">
       <button
         className="btn btn-secondary mt-3"
-        onClick={() => alert("Workout saved!")}>
+        onClick={props.saveWorkout}>
         Save
       </button>
     </div>

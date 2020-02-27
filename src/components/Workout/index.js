@@ -19,7 +19,7 @@ export default function Workout(props) {
         )}
       </ul>
       <SaveButton
-        onclick={props.alertSave} />
+        saveWorkout={props.saveWorkout} />
       {/* if select value = "circuit" render Circuit component */}
 
       {/* if select value = "ladder" render Ladder component */}
