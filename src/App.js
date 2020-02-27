@@ -104,6 +104,7 @@ function App() {
       ...workout,
       exercise
     ]);
+
   }
 
   // Function to remove exercise from workout

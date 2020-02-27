@@ -1,5 +1,5 @@
 import React from "react";
-import ExerciseItem from "../ExerciseItem";
+// import ExerciseItem from "../ExerciseItem";
 
 export default function Ladder(props) {
 

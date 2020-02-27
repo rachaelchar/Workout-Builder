@@ -11,11 +11,11 @@ export default function Workout(props) {
   // Render the template that the user has selected, if appropriate.
   if (props.workoutType === "circuit") {
     template = <Circuit
-      exerciseList={props.workout}
+      exerciseList={props.exerciseList}
     />;
   } else if (props.workoutType === "ladder") {
     template = <Ladder
-      exerciseList={props.workout}
+      exerciseList={props.exerciseList}
     />;
   } else {
     // Otherwise, build the workout without a template.
