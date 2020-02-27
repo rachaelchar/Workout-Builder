@@ -1,5 +1,6 @@
 import React from 'react';
 import ExerciseItem from "../ExerciseItem";
+import SaveButton from "../SaveButton";
 // import Circuit from "../Circuit";
 // import Ladder from "../Ladder";
 
@@ -17,9 +18,12 @@ export default function Workout(props) {
           />
         )}
       </ul>
+      <SaveButton
+        onclick={props.alertSave} />
       {/* if select value = "circuit" render Circuit component */}
 
       {/* if select value = "ladder" render Ladder component */}
+
     </div>
   );
 }
