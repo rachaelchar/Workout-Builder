@@ -40,8 +40,13 @@ export default function Workout(props) {
 
       {template}
 
-      <SaveButton
-        saveWorkout={props.saveWorkout} />
+      {props.exerciseList.length >= 1 ?
+        <SaveButton
+          saveWorkout={props.saveWorkout} />
+        :
+        <h5 className="text-center text-secondary mt-4 font-italic">To begin, add an exercise!</h5>
+      }
+
     </div>
   );
 }
