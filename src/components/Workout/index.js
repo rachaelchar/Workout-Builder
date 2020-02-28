@@ -20,21 +20,23 @@ export default function Workout(props) {
   } else {
     // Otherwise, build the workout without a template.
     template =
-      <ul className="list-group">
-        {props.exerciseList.map((exercise) =>
-          <ExerciseItem
-            key={exercise.name}
-            exercise={exercise}
-            list="workout"
-            removeFromWorkout={props.removeFromWorkout}
-          />
-        )}
-      </ul>;
+      <div>
+        <h4 className="text-center">Workout</h4>
+        <ul className="list-group">
+          {props.exerciseList.map((exercise) =>
+            <ExerciseItem
+              key={exercise.name}
+              exercise={exercise}
+              list="workout"
+              removeFromWorkout={props.removeFromWorkout}
+            />
+          )}
+        </ul>
+      </div>;
   }
 
   return (
     <div>
-      <h4 className="text-center">Workout</h4>
 
       {template}
 
