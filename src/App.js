@@ -31,7 +31,7 @@ function App() {
     {
       name: "Sissy Squats",
       type: "lower",
-      muscle_group: "Quads",
+      muscle_group: "quads",
       aerobic: false
     },
     {

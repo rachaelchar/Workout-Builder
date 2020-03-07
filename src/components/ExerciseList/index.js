@@ -1,11 +1,12 @@
 import React from 'react';
 import ExerciseItem from '../ExerciseItem';
+import Modal from '../Modal';
 import "./style.css";
 
 export default function ExerciseList(props) {
 
   const showModal = () => {
-
+    console.log("Show me the modal!")
   }
 
 
