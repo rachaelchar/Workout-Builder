@@ -1,4 +1,18 @@
-.btn-ocean {
+.btn-ocean, .btn-ocean:hover, .btn-ocean:focus {
   background-color: #7babad;
   color: white;
+  border-color: #7babad;
+}
+
+.btn-sun, .btn-sun:hover, .btn-sun:focus {
+  background-color: #ffe88c;
+  color: rgb(59, 59, 59);
+  border-color: #ffe88c;
+
+}
+
+.btn-light-grey, .btn-light-grey:hover, .btn-light-grey:focus {
+  background-color: lightgray;
+  color: rgb(59, 59, 59);
+  border-color: lightgray;
 }
