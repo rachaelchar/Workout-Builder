@@ -93,6 +93,13 @@ function App() {
     }
   ];
 
+  // test
+  fetch("/test").then((data) => {
+    return data.json();
+  }).then((data) => {
+    console.log(data);
+  });
+
   const [filteredExerciseList, setFilteredExerciseList] = useState([]);
   const [workoutType, setWorkoutType] = useState();
   const [workout, setWorkout] = useState([]);
