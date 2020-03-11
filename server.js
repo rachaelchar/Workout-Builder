@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-// const db = require('./models');
+const db = require('./models');
 // const routes = require('./routes');
 
 const app = express();
@@ -16,12 +16,12 @@ if (process.env.NODE_ENV === "production") {
 
 // app.use('/', routes);
 
-// db.sequelize.sync({force: true}).then(() => {
-// db.sequelize.sync().then(() => {
-app.listen(PORT, () => {
-  console.log(`App listening on PORT ${PORT}`);
+// db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`App listening on PORT ${PORT}`);
+  });
 });
-// });
 
 app.get("/test", (req, res) => {
   res.json("This is working");
