@@ -27,7 +27,7 @@ app.get("/test", (req, res) => {
   res.json("This is working");
 });
 
-// api routes
+// =============== API ROUTES ===============
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"))
