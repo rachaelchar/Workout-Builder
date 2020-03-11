@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const db = require('./models');
-// const routes = require('./routes');
+const routes = require('./routes');
 
 const app = express();
 
@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static('client/build'));
 }
 
-// app.use('/', routes);
+app.use('/', routes);
 
 // db.sequelize.sync({ force: true }).then(() => {
 db.sequelize.sync().then(() => {
@@ -29,6 +29,10 @@ app.get("/test", (req, res) => {
 
 // =============== API ROUTES ===============
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"))
-});
+
+// app.use('/', apiRoutes);
+
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"))
+// });
