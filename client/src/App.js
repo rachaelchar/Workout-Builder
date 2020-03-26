@@ -36,36 +36,52 @@ function App() {
     alert("Workout saved!");
   }
 
-  // When the component mounts, show all exercises 
-  useEffect(() => {
+  const fetchAllExercises = () => {
     Axios.get("/api/exercises")
       .then(response => {
-        console.log(response.data);
-        const rawExerciseList = response.data;
-        setFilteredExerciseList(rawExerciseList);
+        const allExercises = response.data;
+        return (allExercises);
+      })
+      .then(allExercises => {
+        setFilteredExerciseList(allExercises);
       });
+  }
+
+  // When the component mounts, show all exercises 
+  useEffect(() => {
+    fetchAllExercises();
   }, []);
 
   // When a workout type is selected, show exercises compatible with that type
   useEffect(() => {
-    const renderedList = filteredExerciseList.filter((exercise) => {
-      if (workoutType === "lower") {
-        return exercise.type === "lower";
-      }
-      else if (workoutType === "upper") {
-        return exercise.type === "upper";
-      }
-      else if (workoutType === "circuit") {
-        return exercise.aerobic === true;
-      }
-      else if (workoutType === "ladder") {
-        return exercise.aerobic === true;
-      }
-      else {
-        return true;
-      }
-    });
-    setFilteredExerciseList(renderedList);
+    Axios.get("/api/exercises")
+      .then(response => {
+        const allExercises = response.data;
+        return (allExercises);
+      })
+      .then(allExercises => {
+
+        const filteredList = allExercises.filter((exercise) => {
+
+          if (workoutType === "lower") {
+            return exercise.type === "lower";
+          }
+          else if (workoutType === "upper") {
+            return exercise.type === "upper";
+          }
+          else if (workoutType === "circuit") {
+            return exercise.aerobic === true;
+          }
+          else if (workoutType === "ladder") {
+            return exercise.aerobic === true;
+          }
+          else {
+            return true;
+          }
+        });
+        setFilteredExerciseList(filteredList);
+      });
+
   }, [workoutType]);
 
 
