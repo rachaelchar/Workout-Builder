@@ -13,14 +13,6 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      name: "Box Jumps",
-      muscle_group: "glutes",
-      type: "lower",
-      aerobic: true,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
-    {
       name: "Dead Lift",
       muscle_group: "glutes",
       type: "lower",
