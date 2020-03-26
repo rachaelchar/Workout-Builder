@@ -687,14 +687,6 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-    {
-      name: "Wide Grip Lat Pull Down",
-      muscle_group: "back",
-      type: "upper",
-      aerobic: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    },
 
     //  =========================================== CARDIO ==========================================
     {
