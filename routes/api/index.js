@@ -8,4 +8,9 @@ router.get("/exercises", (req, res) => {
   })
 });
 
+router.post("/exercises", (req, res) => {
+  const newExercise = req.body;
+  db.exercise.create(newExercise)
+});
+
 module.exports = router;

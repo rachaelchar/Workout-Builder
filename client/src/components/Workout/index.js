@@ -12,10 +12,14 @@ export default function Workout(props) {
   if (props.workoutType === "circuit") {
     template = <Circuit
       exerciseList={props.exerciseList}
+      removeFromWorkout={props.removeFromWorkout}
+
     />;
   } else if (props.workoutType === "ladder") {
     template = <Ladder
       exerciseList={props.exerciseList}
+      removeFromWorkout={props.removeFromWorkout}
+
     />;
   } else {
     // Otherwise, build the workout without a template.
@@ -37,16 +41,13 @@ export default function Workout(props) {
 
   return (
     <div>
-
       {template}
-      {/* Ternary operator to render the save button only if the user has added at least one exercise */}
       {props.exerciseList.length >= 1 ?
         <SaveButton
           saveWorkout={props.saveWorkout} />
         :
         <h5 className="text-center text-secondary mt-4 font-italic">Add an exercise to begin!</h5>
       }
-
     </div>
   );
 }
