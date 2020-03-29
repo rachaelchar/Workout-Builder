@@ -12,15 +12,6 @@ function App() {
   const [workoutType, setWorkoutType] = useState();
   const [workout, setWorkout] = useState([]);
 
-
-  // Function to add exercise to database
-  // const addExerciseToDb = (newExercise) => {
-  //   Axios.post("api/exercises", newExercise)
-  //     .then(response => {
-  //       console.log(response);
-  //     });
-  // } 
-
   // Function to add exercise to workout
   const addToWorkout = (exercise) => {
     setWorkout([

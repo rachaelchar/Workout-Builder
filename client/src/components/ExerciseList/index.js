@@ -18,10 +18,31 @@ export default function ExerciseList(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("exercise name: ", exerciseName);
-    console.log("exercise type: ", exerciseType);
-    console.log("muscle group: ", muscleGroup);
-    console.log("is aerobic: ", isAerobic);
+    console.log("newExercise", newExercise);
+
+    // check to see if exercise already exists in db
+
+    // display message 'saved!' or 'exercise already exists'
+
+    // post object to database
+    Axios.post("api/exercises", newExercise)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      });
+
+    // reset newExercise states to empty strings
+
+  }
+
+
+  const newExercise = {
+    "name": exerciseName,
+    "type": exerciseType,
+    "muscle_group": muscleGroup,
+    "aerobic": isAerobic
   }
 
   return (
@@ -81,10 +102,7 @@ export default function ExerciseList(props) {
             </label>
             </div>
             <hr />
-            <Button className="btn-light-grey mt-2 mr-4" onClick={handleClose}>
-              Close
-            </Button>
-            <Button className="btn-sun mt-2 float-right" type="submit">
+            <Button className="btn-sun mt-2 " type="submit" onClick={handleSubmit}>
               Save Changes
             </Button>
           </form>
