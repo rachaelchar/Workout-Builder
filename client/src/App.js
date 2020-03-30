@@ -98,6 +98,7 @@ function App() {
             <ExerciseList
               exerciseList={filteredExerciseList}
               addToWorkout={addToWorkout}
+              fetchAllExercises={fetchAllExercises}
             />
           </div>
           <div className="col-5">

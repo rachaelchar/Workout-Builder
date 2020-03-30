@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import ExerciseItem from '../ExerciseItem';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Alert from 'react-bootstrap/Alert';
 import "./style.css";
 import Axios from "axios";
 
 
 export default function ExerciseList(props) {
   const [show, setShow] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [exerciseName, setExerciseName] = useState('');
   const [exerciseType, setExerciseType] = useState('');
   const [muscleGroup, setMuscleGroup] = useState('');
@@ -16,27 +18,57 @@ export default function ExerciseList(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const capitalize = (str) => {
+    str = str.split(" ");
+
+    for (var i = 0, x = str.length; i < x; i++) {
+      str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+
+    return str.join(" ");
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("newExercise", newExercise);
+    console.log(props.exerciseList);
 
-    // check to see if exercise already exists in db
+    const arrayOfExercises = props.exerciseList;
 
-    // display message 'saved!' or 'exercise already exists'
+    // const checkedExerciseName = capitalize(exerciseName);
+    // setExerciseName(checkedExerciseName);
 
-    // post object to database
-    Axios.post("api/exercises", newExercise)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      });
+    // console.log("capitalized name: ", checkedExerciseName);
+    // console.log("official name: ", exerciseName);
 
-    // reset newExercise states to empty strings
+    // check to see if exercise already exists in db 
+    if (arrayOfExercises.some(exercise => exercise.name === exerciseName)) {
+      console.log("exercise already exists");
+      setShowAlert(true);
+    } else {
+      // post object to database
+      Axios.post("api/exercises", newExercise)
+        .then(response => {
+          console.log(response);
+          props.fetchAllExercise();
+        })
+        .catch(error => {
+          console.log(error)
+        });
 
+      // reset newExercise states to empty strings
+      setExerciseName('');
+      setExerciseType('');
+      setMuscleGroup('');
+      setIsAerobic(false);
+
+
+      handleClose();
+
+      // show updated exercise list
+
+    }
   }
-
 
   const newExercise = {
     "name": exerciseName,
@@ -69,13 +101,14 @@ export default function ExerciseList(props) {
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <label id="name" className="pt-1">Exercise Name</label>
-            <input type="text" required className="form-control" name="exerciseName" onChange={(e) => setExerciseName(e.target.value)}></input>
+            <input type="text" required className="form-control" name="exerciseName" onChange={(e) => setExerciseName(capitalize(e.target.value))}></input>
 
             <label className="pt-3">Exercise Type</label>
             <select className="form-control" name="exerciseType" onChange={(e) => setExerciseType(e.target.value)}>
               <option value="all">- Select -</option>
               <option value="upper">Upper Body</option>
               <option value="lower">Lower Body</option>
+              <option value="core">Core</option>
               <option value="circuit">Circuit</option>
               <option value="cardio">Cardio</option>
             </select>
@@ -102,9 +135,10 @@ export default function ExerciseList(props) {
             </label>
             </div>
             <hr />
-            <Button className="btn-sun mt-2 " type="submit" onClick={handleSubmit}>
+            <Button className="btn-sun mt-2" type="submit" onClick={handleSubmit}>
               Save Changes
             </Button>
+            <Alert show={showAlert} variant="danger" className="mt-4">That exercise already exists!</Alert>
           </form>
         </Modal.Body>
       </Modal>
