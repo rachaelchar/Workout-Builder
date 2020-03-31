@@ -57,6 +57,9 @@ function App() {
     Axios.get("/api/exercises")
       .then(response => {
         const allExercises = response.data;
+        // sort exercises alphabetically -- working in console but not rendering
+        allExercises.sort((a, b) => (a.name > b.name) ? 1 : -1);
+        console.log(allExercises);
         return (allExercises);
       })
       .then(allExercises => {

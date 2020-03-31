@@ -20,32 +20,36 @@ export default function ExerciseList(props) {
 
   const capitalize = (str) => {
     str = str.split(" ");
-
     for (var i = 0, x = str.length; i < x; i++) {
       str[i] = str[i][0].toUpperCase() + str[i].substr(1);
     }
-
     return str.join(" ");
   }
 
+  const newExercise = {
+    "name": exerciseName,
+    "type": exerciseType,
+    "muscle_group": muscleGroup,
+    "aerobic": isAerobic
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("newExercise", newExercise);
-    console.log(props.exerciseList);
 
     const arrayOfExercises = props.exerciseList;
-
-    // const checkedExerciseName = capitalize(exerciseName);
-    // setExerciseName(checkedExerciseName);
-
-    // console.log("capitalized name: ", checkedExerciseName);
-    // console.log("official name: ", exerciseName);
-
     // check to see if exercise already exists in db 
     if (arrayOfExercises.some(exercise => exercise.name === exerciseName)) {
       console.log("exercise already exists");
       setShowAlert(true);
+
     } else {
+
+      // Capitalize new exercise name -- NOT WORKING --
+      const capitalizedName = capitalize(exerciseName);
+      setExerciseName(capitalizedName);
+      console.log("exerciseName: ", exerciseName);
+      console.log("New Exercise: ", newExercise);
+
       // post object to database
       Axios.post("api/exercises", newExercise)
         .then(response => {
@@ -62,19 +66,11 @@ export default function ExerciseList(props) {
       setMuscleGroup('');
       setIsAerobic(false);
 
-
       handleClose();
 
       // show updated exercise list
 
     }
-  }
-
-  const newExercise = {
-    "name": exerciseName,
-    "type": exerciseType,
-    "muscle_group": muscleGroup,
-    "aerobic": isAerobic
   }
 
   return (
@@ -101,7 +97,7 @@ export default function ExerciseList(props) {
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <label id="name" className="pt-1">Exercise Name</label>
-            <input type="text" required className="form-control" name="exerciseName" onChange={(e) => setExerciseName(capitalize(e.target.value))}></input>
+            <input type="text" required className="form-control" name="exerciseName" onChange={(e) => setExerciseName(e.target.value)}></input>
 
             <label className="pt-3">Exercise Type</label>
             <select className="form-control" name="exerciseType" onChange={(e) => setExerciseType(e.target.value)}>
