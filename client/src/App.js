@@ -57,7 +57,7 @@ function App() {
     Axios.get("/api/exercises")
       .then(response => {
         const allExercises = response.data;
-        // sort exercises alphabetically -- working in console but not rendering
+        // Sort exercises alphabetically
         allExercises.sort((a, b) => (a.name > b.name) ? 1 : -1);
         console.log(allExercises);
         return (allExercises);
@@ -102,6 +102,8 @@ function App() {
               exerciseList={filteredExerciseList}
               addToWorkout={addToWorkout}
               fetchAllExercises={fetchAllExercises}
+              workout={workout}
+              setWorkout={setWorkout}
             />
           </div>
           <div className="col-5">

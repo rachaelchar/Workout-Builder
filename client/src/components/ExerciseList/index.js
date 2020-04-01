@@ -50,7 +50,7 @@ export default function ExerciseList(props) {
       console.log("exerciseName: ", exerciseName);
       console.log("New Exercise: ", newExercise);
 
-      // post object to database
+      // Post route adds newExercise object to database
       Axios.post("api/exercises", newExercise)
         .then(response => {
           console.log(response);
@@ -60,7 +60,7 @@ export default function ExerciseList(props) {
           console.log(error)
         });
 
-      // reset newExercise states to empty strings
+      // Reset newExercise states to empty strings
       setExerciseName('');
       setExerciseType('');
       setMuscleGroup('');
@@ -68,9 +68,13 @@ export default function ExerciseList(props) {
 
       handleClose();
 
-      // show updated exercise list
+      // Render updated exercise list
 
     }
+  }
+
+  const saveWorkout = () => {
+
   }
 
   return (
