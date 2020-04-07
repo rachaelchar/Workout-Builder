@@ -32,8 +32,15 @@ function App() {
   // Function to save the complete workout 
   const saveWorkout = () => {
     console.log(workout);
+    localStorage.setItem("Workout", JSON.stringify(workout));
     // alert "Workout saved!" if no errors
     alert("Workout saved!");
+    getWorkout();
+  }
+
+  const getWorkout = () => {
+    var lastWorkout = (localStorage.getItem("Workout") || "[]");
+    console.log("Last workout: ", lastWorkout);
   }
 
   const fetchAllExercises = () => {
