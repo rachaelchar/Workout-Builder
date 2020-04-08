@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
 import Search from '../components/Search';
 import ExerciseList from '../components/ExerciseList';
 import Workout from '../components/Workout';
@@ -30,7 +29,6 @@ export default function Home() {
 
   // Function to save the complete workout 
   const saveWorkout = () => {
-    // console.log(workout);
 
     const loggedWorkout = {
       ...workout,
@@ -38,7 +36,9 @@ export default function Home() {
       time: moment().format('LLLL')
     }
 
-    console.log(loggedWorkout);
+    console.log("workout: ", workout);
+    console.log("logged workout: ", loggedWorkout);
+
     localStorage.setItem("Workout", JSON.stringify(loggedWorkout));
     alert("Workout saved!");
   }

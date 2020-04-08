@@ -73,10 +73,6 @@ export default function ExerciseList(props) {
     }
   }
 
-  const saveWorkout = () => {
-
-  }
-
   return (
     <>
       <ul className="list-group">
