@@ -1,0 +1,8 @@
+.bg-sun {
+  background-color: #ffe88c;
+  color: rgb(59, 59, 59);
+}
+
+.card {
+  max-width: 16rem;
+}

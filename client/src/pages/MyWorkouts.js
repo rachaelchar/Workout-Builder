@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
+import Card from '../components/Card';
 
 export default function MyWorkouts() {
 
   const getWorkout = () => {
     var lastWorkout = (localStorage.getItem("Workout") || "[]");
-    console.log("Last workout: ", lastWorkout);
+    console.log("Last workout: ", JSON.parse(lastWorkout));
   }
 
   useEffect(() => {
@@ -12,6 +13,6 @@ export default function MyWorkouts() {
   }, []);
 
   return (
-    <h1>My Workouts Page</h1>
+    <Card />
   )
 }
