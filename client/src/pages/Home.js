@@ -4,6 +4,7 @@ import Search from '../components/Search';
 import ExerciseList from '../components/ExerciseList';
 import Workout from '../components/Workout';
 import Axios from 'axios';
+import moment from "moment"
 
 export default function Home() {
   const [filteredExerciseList, setFilteredExerciseList] = useState([]);
@@ -29,17 +30,19 @@ export default function Home() {
 
   // Function to save the complete workout 
   const saveWorkout = () => {
-    console.log(workout);
-    localStorage.setItem("Workout", JSON.stringify(workout));
-    // alert "Workout saved!" if no errors
+    // console.log(workout);
+
+    const loggedWorkout = {
+      ...workout,
+      workoutType: workoutType,
+      time: moment().format('LLLL')
+    }
+
+    console.log(loggedWorkout);
+    localStorage.setItem("Workout", JSON.stringify(loggedWorkout));
     alert("Workout saved!");
-    getWorkout();
   }
 
-  const getWorkout = () => {
-    var lastWorkout = (localStorage.getItem("Workout") || "[]");
-    console.log("Last workout: ", lastWorkout);
-  }
 
   const fetchAllExercises = () => {
     Axios.get("/api/exercises")
