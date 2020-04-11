@@ -1,22 +1,10 @@
-import React, { useEffect } from 'react';
-import Card from '../components/Card';
+import React from 'react';
+import CardGroup from '../components/CardGroup';
 
 export default function MyWorkouts(props) {
 
-  const getWorkouts = () => {
-
-    // console.log("Last workout: ", JSON.parse(lastWorkout));
-
-    console.log("Saved Workouts:", props.savedWorkouts);
-  }
-
-  useEffect(() => {
-    getWorkouts();
-  }, []);
-
   return (
-    <Card
-      getWorkouts={getWorkouts}
+    <CardGroup
       exercise={props.exercise}
       savedWorkouts={props.savedWorkouts}
     />
