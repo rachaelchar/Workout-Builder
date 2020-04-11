@@ -5,7 +5,7 @@ import Workout from '../components/Workout';
 import Axios from 'axios';
 import moment from "moment"
 
-export default function Home() {
+export default function Home(props) {
   const [filteredExerciseList, setFilteredExerciseList] = useState([]);
   const [workoutType, setWorkoutType] = useState();
   const [workout, setWorkout] = useState([]);
@@ -35,6 +35,9 @@ export default function Home() {
       workoutType: workoutType,
       time: moment().format('LLLL')
     }
+
+    var lastWorkout = (localStorage.getItem("Workout") || "[]");
+    const newSavedWorkoutsArray = props.savedWorkouts.push(lastWorkout);
 
     console.log("workout: ", workout);
     console.log("logged workout: ", loggedWorkout);

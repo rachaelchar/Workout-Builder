@@ -1,18 +1,24 @@
 import React, { useEffect } from 'react';
 import Card from '../components/Card';
 
-export default function MyWorkouts() {
+export default function MyWorkouts(props) {
 
-  const getWorkout = () => {
-    var lastWorkout = (localStorage.getItem("Workout") || "[]");
-    console.log("Last workout: ", JSON.parse(lastWorkout));
+  const getWorkouts = () => {
+
+    // console.log("Last workout: ", JSON.parse(lastWorkout));
+
+    console.log("Saved Workouts:", props.savedWorkouts);
   }
 
   useEffect(() => {
-    getWorkout();
+    getWorkouts();
   }, []);
 
   return (
-    <Card />
+    <Card
+      getWorkouts={getWorkouts}
+      exercise={props.exercise}
+      savedWorkouts={props.savedWorkouts}
+    />
   )
 }
