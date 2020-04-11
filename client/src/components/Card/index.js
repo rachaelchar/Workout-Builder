@@ -1,33 +1,38 @@
-import React, { useEffect } from 'react';
-import './style.css';
-// import ExerciseItem from '../ExerciseItem';
+import React from 'react';
+import CardListItem from '../CardListItem';
+
 
 export default function Card(props) {
 
-  useEffect(() => {
-    // props.getWorkout();
-    console.log(props.savedWorkouts);
-  }, []);
+  // const retrievedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
+  // console.log("workoutList: ", retrievedWorkouts);
+
+
+  const deleteWorkout = (workout) => {
+    const newWorkoutArray = props.retrievedWorkouts.filter((deletedWorkout) => {
+      // return the complete list of exercises that do not match the key of the deleted exercise
+      return workout.time !== deletedWorkout.time
+    });
+
+    // override the storedWorkouts key with the newly updated workout array
+    localStorage.setItem("storedWorkouts", JSON.stringify(newWorkoutArray));
+  }
 
   return (
-    // Reusable card for workouts on MyWorkouts Page
-    <div className="container mt-4">
-      <div className="card-group">
-        <div className="card">
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-          <ul className="list-group list-group-flush">
-            {/* <ExerciseItem
-              key={props.exercise.name}
-              exercise={props.exercise}
-              list="savedworkout"
-            /> */}
-          </ul>
-          <button className="bg-sun">Delete</button>
-        </div>
+    <div className="card">
+      <div className="card-body">
+        <h5 className="card-title text-center">{props.retrievedWorkouts[0].time}</h5>
       </div>
+      <ul className="list-group list-group-flush">
+        {props.retrievedWorkouts.map((workout) =>
+          <CardListItem
+            key={workout.time}
+            list="savedWorkout"
+            retrievedWorkouts={props.retrievedWorkouts}
+          />
+        )}
+      </ul>
+      <button className="bg-sun" onClick={deleteWorkout}>Delete</button>
     </div>
-  );
+  )
 }
