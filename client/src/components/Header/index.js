@@ -10,9 +10,9 @@ export default function Header() {
         <a href="/">
           <img
             src={logo}
-            className="img-logo"
+            className="img-logo d-inline-block align-top"
             width="40" height="40"
-            className="d-inline-block align-top" alt="" />
+            alt="Workout Builder" />
         </a>
         <a className="nav-link text-sun float-right" href="/myworkouts">My Workouts</a>
       </span>

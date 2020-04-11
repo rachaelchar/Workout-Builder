@@ -27,25 +27,27 @@ export default function Home(props) {
     setWorkout(newWorkoutList);
   }
 
-  // Function to save the complete workout 
+  // Function to save the complete workout to local storage
   const saveWorkout = () => {
 
+    // may need if statement for saving first workout bc 'storedWorkouts' will be undefined
+    const storedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
+
+    // define loggedWorkout to include identifying type and time
     const loggedWorkout = {
       ...workout,
       workoutType: workoutType,
-      time: moment().format('LLLL')
+      time: moment().format('ddd, MM-DD-YYYY')
     }
 
-    var lastWorkout = (localStorage.getItem("Workout") || "[]");
-    const newSavedWorkoutsArray = props.savedWorkouts.push(lastWorkout);
+    // push new loggedWorkout to storedWorkouts
+    storedWorkouts.push(loggedWorkout);
 
-    console.log("workout: ", workout);
+    // resave storedWorkouts to local storage
+    localStorage.setItem("storedWorkouts", JSON.stringify(storedWorkouts));
+
     console.log("logged workout: ", loggedWorkout);
-
-    localStorage.setItem("Workout", JSON.stringify(loggedWorkout));
-    alert("Workout saved!");
   }
-
 
   const fetchAllExercises = () => {
     Axios.get("/api/exercises")
@@ -70,7 +72,7 @@ export default function Home(props) {
         const allExercises = response.data;
         // Sort exercises alphabetically
         allExercises.sort((a, b) => (a.name > b.name) ? 1 : -1);
-        console.log(allExercises);
+        // console.log(allExercises);
         return (allExercises);
       })
       .then(allExercises => {
