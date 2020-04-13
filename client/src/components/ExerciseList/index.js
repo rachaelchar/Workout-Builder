@@ -76,9 +76,9 @@ export default function ExerciseList(props) {
   return (
     <>
       <ul className="list-group">
-        {props.exerciseList.map((exercise) =>
+        {props.exerciseList.map((exercise, index) =>
           <ExerciseItem
-            key={exercise.name}
+            key={index}
             exercise={exercise}
             list="exerciseList"
             addToWorkout={props.addToWorkout}

@@ -3,8 +3,14 @@ import './style.css';
 
 export default function CardListItem(props) {
 
-  return (
-    <li className="text-center">{props.retrievedWorkouts[0][0].name}</li>
-  )
 
+  return (
+    <>
+      {props.retrievedWorkouts.map((workout, index) =>
+        // need to iterate 0 - array.length only for that particular workout
+        <li key={index} className="text-center">{workout[0].name}</li>
+      )
+      }
+    </>
+  )
 }

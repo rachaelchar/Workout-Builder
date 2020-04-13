@@ -27,9 +27,9 @@ export default function Workout(props) {
       <div>
         <h4 className="text-center">Workout</h4>
         <ul className="list-group">
-          {props.exerciseList.map((exercise) =>
+          {props.exerciseList.map((exercise, index) =>
             <ExerciseItem
-              key={exercise.name}
+              key={index}
               exercise={exercise}
               list="workout"
               removeFromWorkout={props.removeFromWorkout}
