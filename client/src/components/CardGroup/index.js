@@ -4,7 +4,13 @@ import Card from '../Card';
 
 export default function CardGroup() {
 
-  const retrievedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
+  var retrievedWorkouts;
+  if (JSON.parse(localStorage.getItem('storedWorkouts')) === null) {
+    retrievedWorkouts = [];
+  } else {
+    retrievedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
+  }
+
   console.log("workoutList: ", retrievedWorkouts);
 
   return (

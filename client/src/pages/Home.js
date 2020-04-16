@@ -30,8 +30,13 @@ export default function Home(props) {
   // Function to save the complete workout to local storage
   const saveWorkout = () => {
 
+    var storedWorkouts;
     // may need if statement for saving first workout bc 'storedWorkouts' will be undefined
-    const storedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
+    if (JSON.parse(localStorage.getItem('storedWorkouts')) === null) {
+      storedWorkouts = [];
+    } else {
+      storedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
+    }
 
     // define loggedWorkout to include identifying type and time
     const loggedWorkout = {
