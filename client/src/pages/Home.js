@@ -41,7 +41,7 @@ export default function Home() {
     // define loggedWorkout to include identifying type and time
     const loggedWorkout = {
       workout,
-      workoutType: workoutType,
+      workoutType: workoutType.charAt(0).toUpperCase() + workoutType.slice(1),
       time: moment().format('ddd, MM-DD-YYYY')
     }
 

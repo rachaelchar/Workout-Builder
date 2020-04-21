@@ -22,7 +22,7 @@ export default function CardGroup() {
       <div className="card-group">
         {retrievedWorkouts.map((workout, index) =>
           <Card
-            title={workout.time}
+            title={`${workout.time}: ${workout.workoutType}`}
             workout={workout}
             key={index}
             retrievedWorkouts={retrievedWorkouts}
