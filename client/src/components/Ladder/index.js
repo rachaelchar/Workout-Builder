@@ -6,24 +6,12 @@ export default function Ladder(props) {
   const namesArray = props.exerciseList.map(exercise => exercise.name);
   console.log("newArray", namesArray);
 
-  // const spliceItem = () => {
-  //   namesArray.splice(0, 1);
-  //   console.log("new names array", namesArray);
-  // }
-
   return (
     <div className="text-center">
       <h4>Ladder</h4>
       <p>30s work | 30s rest</p>
       <ul className="list-group">
-        <li className="list-group-item pl-1 bg-ocean-darken-4">5x {namesArray[0]}
-          {/* < button
-            className="btn btn-sun btn-sm float-right"
-            onClick={spliceItem}
-          // onClick={() => props.removeFromWorkout(props.exercise)
-          // }
-          >-</button > */}
-        </li>
+        <li className="list-group-item pl-1 bg-ocean-darken-4">5x {namesArray[0]}</li>
         <li className="list-group-item pt-0 pb-0 rest bg-light-grey">1.5 minute rest</li>
 
 

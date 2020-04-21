@@ -77,7 +77,6 @@ export default function Home() {
         const allExercises = response.data;
         // Sort exercises alphabetically
         allExercises.sort((a, b) => (a.name > b.name) ? 1 : -1);
-        // console.log(allExercises);
         return (allExercises);
       })
       .then(allExercises => {

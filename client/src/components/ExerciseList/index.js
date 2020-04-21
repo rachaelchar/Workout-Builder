@@ -53,7 +53,6 @@ export default function ExerciseList(props) {
       // Post route adds newExercise object to database
       Axios.post("api/exercises", newExercise)
         .then(response => {
-          console.log(response);
           props.fetchAllExercise();
         })
         .catch(error => {

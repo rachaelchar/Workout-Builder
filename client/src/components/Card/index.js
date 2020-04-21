@@ -4,8 +4,6 @@ import './style.css';
 
 export default function Card(props) {
 
-  console.log(props.workout)
-
   return (
     <>
       <div className="card mr-1">
