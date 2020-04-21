@@ -1,8 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './style.css';
-// import CardListItem from '../CardListItem';
 
 export default function Card(props) {
+
+  const deleteWorkout = () => {
+    let savedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
+    console.log(savedWorkouts);
+    const index = savedWorkouts.indexOf(props.key);
+    savedWorkouts.splice(index, 1);
+
+    localStorage.setItem("storedWorkouts", JSON.stringify(savedWorkouts));
+    props.setStoredWorkouts(savedWorkouts);
+  }
+
 
   return (
     <>
@@ -13,11 +23,11 @@ export default function Card(props) {
           <ul className="list-group list-group-flush">
             {/* for each workout, iterate through the exercise objects to select and display the 'name' property of each */}
             {props.workout.workout.map(item =>
-              < li className="ml-3">{item.name}</li>
+              <li className="ml-3">{item.name}</li>
             )}
           </ul>
         </div>
-        <button className="bg-sun mt-2" onClick={props.deleteWorkout}>Delete</button>
+        <button id={props.key} className="bg-sun mt-2" onClick={deleteWorkout}>Delete</button>
       </div>
     </>
   )

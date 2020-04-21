@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import Card from '../Card';
 
@@ -11,15 +11,11 @@ export default function CardGroup() {
     retrievedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
   }
 
-  const deleteWorkout = (workout) => {
-    const newWorkoutArray = retrievedWorkouts.filter((deletedWorkout) => {
-      // return the complete list of exercises that do not match the key of the deleted exercise
-      return workout.time !== deletedWorkout.time
-    });
+  const [storedWorkouts, setStoredWorkouts] = useState(retrievedWorkouts);
 
-    // override the storedWorkouts key with the newly updated workout array
-    localStorage.setItem("storedWorkouts", JSON.stringify(newWorkoutArray));
-  }
+  useEffect(() => {
+    // rerender cards
+  }, [storedWorkouts]);
 
   return (
     <div className="container mt-4">
@@ -30,7 +26,7 @@ export default function CardGroup() {
             workout={workout}
             key={index}
             retrievedWorkouts={retrievedWorkouts}
-            deleteWorkout={deleteWorkout}
+            setStoredWorkouts={setStoredWorkouts}
           />
         )}
       </div>
