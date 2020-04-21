@@ -5,7 +5,7 @@ import Workout from '../components/Workout';
 import Axios from 'axios';
 import moment from "moment"
 
-export default function Home(props) {
+export default function Home() {
   const [filteredExerciseList, setFilteredExerciseList] = useState([]);
   const [workoutType, setWorkoutType] = useState();
   const [workout, setWorkout] = useState([]);

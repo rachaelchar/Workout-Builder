@@ -1,12 +1,9 @@
 import React from 'react';
 import CardGroup from '../components/CardGroup';
 
-export default function MyWorkouts(props) {
+export default function MyWorkouts() {
 
   return (
-    <CardGroup
-      exercise={props.exercise}
-      savedWorkouts={props.savedWorkouts}
-    />
+    <CardGroup />
   )
 }
