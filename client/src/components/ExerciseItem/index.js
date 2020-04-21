@@ -5,7 +5,6 @@ export default function ExerciseItem(props) {
 
   return (
     <li className="list-group-item">{props.exercise.name}
-      {/* use ternary operator to render + or - button based on which list the item is in */}
       {
         props.list === "exerciseList" ?
           < button

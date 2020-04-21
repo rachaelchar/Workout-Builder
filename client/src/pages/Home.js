@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
 import Search from '../components/Search';
 import ExerciseList from '../components/ExerciseList';
 import Workout from '../components/Workout';
 import Axios from 'axios';
+import moment from "moment"
 
 export default function Home() {
   const [filteredExerciseList, setFilteredExerciseList] = useState([]);
@@ -27,18 +27,31 @@ export default function Home() {
     setWorkout(newWorkoutList);
   }
 
-  // Function to save the complete workout 
+  // Function to save the complete workout to local storage
   const saveWorkout = () => {
-    console.log(workout);
-    localStorage.setItem("Workout", JSON.stringify(workout));
-    // alert "Workout saved!" if no errors
-    alert("Workout saved!");
-    getWorkout();
-  }
 
-  const getWorkout = () => {
-    var lastWorkout = (localStorage.getItem("Workout") || "[]");
-    console.log("Last workout: ", lastWorkout);
+    var storedWorkouts;
+    // may need if statement for saving first workout bc 'storedWorkouts' will be undefined
+    if (JSON.parse(localStorage.getItem('storedWorkouts')) === null) {
+      storedWorkouts = [];
+    } else {
+      storedWorkouts = JSON.parse(localStorage.getItem('storedWorkouts'));
+    }
+
+    // define loggedWorkout to include identifying type and time
+    const loggedWorkout = {
+      workout,
+      workoutType: workoutType,
+      time: moment().format('ddd, MM-DD-YYYY')
+    }
+
+    // push new loggedWorkout to storedWorkouts
+    storedWorkouts.push(loggedWorkout);
+
+    // resave storedWorkouts to local storage
+    localStorage.setItem("storedWorkouts", JSON.stringify(storedWorkouts));
+
+    console.log("logged workout: ", loggedWorkout);
   }
 
   const fetchAllExercises = () => {
@@ -64,7 +77,6 @@ export default function Home() {
         const allExercises = response.data;
         // Sort exercises alphabetically
         allExercises.sort((a, b) => (a.name > b.name) ? 1 : -1);
-        console.log(allExercises);
         return (allExercises);
       })
       .then(allExercises => {

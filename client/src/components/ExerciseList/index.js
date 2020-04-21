@@ -53,7 +53,6 @@ export default function ExerciseList(props) {
       // Post route adds newExercise object to database
       Axios.post("api/exercises", newExercise)
         .then(response => {
-          console.log(response);
           props.fetchAllExercise();
         })
         .catch(error => {
@@ -73,16 +72,12 @@ export default function ExerciseList(props) {
     }
   }
 
-  const saveWorkout = () => {
-
-  }
-
   return (
     <>
       <ul className="list-group">
-        {props.exerciseList.map((exercise) =>
+        {props.exerciseList.map((exercise, index) =>
           <ExerciseItem
-            key={exercise.name}
+            key={index}
             exercise={exercise}
             list="exerciseList"
             addToWorkout={props.addToWorkout}

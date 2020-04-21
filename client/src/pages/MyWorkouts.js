@@ -1,7 +1,9 @@
 import React from 'react';
+import CardGroup from '../components/CardGroup';
 
 export default function MyWorkouts() {
+
   return (
-    <h1>My Workouts Page</h1>
+    <CardGroup />
   )
 }
