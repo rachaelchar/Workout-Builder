@@ -1,32 +1,25 @@
 import React, { useEffect } from 'react';
+import './style.css';
 // import CardListItem from '../CardListItem';
 
 export default function Card(props) {
 
-  // props.retrievedWorkouts.map(workout => {
-  // console.log(props.retrievedWorkouts[i]);
-  // for (var i; i <= props.retrievedWorkouts.length; i++) {
-  //   console.log(props.retrievedWorkouts[i]);
-  // }
-
-  props.retrievedWorkouts.forEach(workout => {
-    for (var i; i <= props.retrievedWorkouts.length; i++) {
-      console.log(workout[i].name);
-    }
-  });
-
+  console.log(props.workout)
 
   return (
     <>
       <div className="card mr-1">
         <div className="card-body">
           <h4>{props.title}</h4>
+          <hr />
+          <ul className="list-group list-group-flush">
+            {/* for each workout, iterate through the exercise objects to select and display the 'name' property of each */}
+            {props.workout.workout.map(item =>
+              < li className="ml-3">{item.name}</li>
+            )}
+          </ul>
         </div>
-        <ul className="list-group list-group-flush">
-          {/* for each workout, iterate through the exercise objects to select and display the 'name' property of each */}
-          <li className="text-center">{props.workout[0].name}</li>
-        </ul>
-        <button className="bg-sun" onClick={props.deleteWorkout}>Delete</button>
+        <button className="bg-sun mt-2" onClick={props.deleteWorkout}>Delete</button>
       </div>
     </>
   )
