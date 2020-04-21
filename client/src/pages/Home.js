@@ -40,7 +40,7 @@ export default function Home() {
 
     // define loggedWorkout to include identifying type and time
     const loggedWorkout = {
-      ...workout,
+      workout,
       workoutType: workoutType,
       time: moment().format('ddd, MM-DD-YYYY')
     }
