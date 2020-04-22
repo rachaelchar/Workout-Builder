@@ -7,8 +7,9 @@ import moment from "moment"
 
 export default function Home() {
   const [filteredExerciseList, setFilteredExerciseList] = useState([]);
-  const [workoutType, setWorkoutType] = useState();
+  const [workoutType, setWorkoutType] = useState("full");
   const [workout, setWorkout] = useState([]);
+
 
   // Function to add exercise to workout
   const addToWorkout = (exercise) => {
@@ -52,6 +53,10 @@ export default function Home() {
     localStorage.setItem("storedWorkouts", JSON.stringify(storedWorkouts));
 
     console.log("logged workout: ", loggedWorkout);
+
+    // display message "workout saved!"
+    alert("Workout saved!");
+    setWorkout([]);
   }
 
   const fetchAllExercises = () => {

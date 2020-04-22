@@ -24,7 +24,7 @@ export default function CardGroup() {
           <Card
             title={`${workout.time}: ${workout.workoutType}`}
             workout={workout}
-            key={index}
+            index={index}
             retrievedWorkouts={retrievedWorkouts}
             setStoredWorkouts={setStoredWorkouts}
           />
